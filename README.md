@@ -38,6 +38,7 @@ This Angular application is a responsive, user-friendly dashboard management sys
 
 ## Technologies Used
 - **Framework:** Angular 18
+- **Animation:** Angular Animation
 - **UI Components:** Angular Material, Ng-Zorro
 - **CSS Framework:** Tailwind CSS
 - **Charts:** Chart.js
