@@ -1,0 +1,71 @@
+<section
+  class="w-fit h-screen overflow-y-auto overflow-x-hidden flex flex-col gap-3 xl:border-e-[1px] border-gray-300 xl:add-shadow bg-white"
+>
+  <div class="relative w-full h-[200px] bg-gold-500">
+    <div
+      class="absolute -bottom-10 add-shadow flex justify-center w-fit rounded-full start-[25%]"
+    >
+      <ng-simple-avatar
+        size="100"
+        name="{{ currentUser?.fname + ' ' + currentUser?.lname }}"
+        bgColor="#c39b32"
+        style="color: #fff"
+      ></ng-simple-avatar>
+    </div>
+  </div>
+
+  <ul class="flex flex-col box-border w-[250px] px-3 mt-10 gap-3">
+    <li
+      class="flex gap-2 items-center p-3 rounded-md cursor-pointer"
+      routerLink="/home/users"
+      routerLinkActive="bg-gold-500"
+    >
+      <img src="/images/home-inactive.svg" alt="logo" />
+
+      <span
+        class="text-black-300 text-base"
+        routerLinkActive="text-white font-semibold"
+      >
+        Users
+      </span>
+    </li>
+    <li
+      class="flex gap-2 items-center p-3 rounded-md cursor-pointer"
+      routerLink="/home/attractions"
+      routerLinkActive="bg-gold-500"
+    >
+      <img src="/images/transaction-inactive.svg" alt="logo" />
+
+      <span
+        class="text-black-300 text-base"
+        routerLinkActive="text-white font-semibold"
+      >
+        Attractions
+      </span>
+    </li>
+    <li
+      class="flex gap-2 items-center p-3 rounded-md cursor-pointer"
+      routerLink="/home/pets"
+      routerLinkActive="bg-gold-500"
+    >
+      <img src="/images/funds-inactive.svg" alt="logo" />
+
+      <span
+        class="text-black-300 text-base"
+        routerLinkActive="text-white font-semibold"
+      >
+        Pet Sales
+      </span>
+    </li>
+    <li class="flex gap-2 items-center p-3 rounded-md cursor-pointer" (click)="onLogout()">
+      <img src="/images/logout-icon.svg" alt="log out" />
+
+      <span
+        class="text-black-300 text-base"
+        routerLinkActive="text-white font-semibold"
+      >
+        Log out
+      </span>
+    </li>
+  </ul>
+</section>

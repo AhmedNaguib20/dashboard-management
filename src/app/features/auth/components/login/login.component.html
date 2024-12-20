@@ -1,0 +1,76 @@
+<section class="flex items-center justify-center">
+  <div
+    class="bg-login-background hidden md:flex w-1/2 min-h-screen text-white flex-col items-start px-14 lg:px-24 justify-center gap-y-3"
+  >
+    <p class="text-xl lg:text-4xl">Sign in to</p>
+    <span class=" text-3xl lg:text-5xl font-bold">Dashboard management</span>
+    <span class="text-xl lg:text-4xl">System</span>
+  </div>
+  <div
+    class="w-full md:w-1/2 flex items-center justify-center min-h-screen p-5"
+  >
+    <div
+      class="w-full lg:w-[70%] max-w-[500px] px-7 py-10 rounded-2xl shadow border border-[#e3e3e3] flex flex-col justify-start items-center gap-5"
+    >
+      <div class="w-full flex-col justify-start items-start gap-3 flex">
+        <div class="text-gold-500 text-3xl font-bold">Sign in</div>
+        <div class="text-gray-400 text-base font-semibold">
+          Welcome to your dashabord managemenet account
+        </div>
+      </div>
+      <form
+        nz-form
+        [nzLayout]="'vertical'"
+        class="w-full"
+        nz-form
+        [formGroup]="form"
+        class="w-full flex flex-col justify-center items-center gap-5"
+      >
+        <div class="w-full flex flex-col items-center justify-center">
+          <div class="w-full flex flex-col gap-2">
+            <nz-form-item>
+              <label
+                class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+                nzFor="fname"
+                >User Name</label
+              >
+              <nz-form-control nzErrorTip="The field is required!">
+                <input
+                  class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                  nz-input
+                  formControlName="username"
+                  placeholder="Type User Name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="w-full flex flex-col gap-2">
+            <nz-form-item>
+              <label
+                class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+                nzFor="password"
+                >Password</label
+              >
+              <nz-form-control nzErrorTip="The field is required!">
+                <input
+                  class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                  nz-input
+                  type="password"
+                  formControlName="password"
+                  placeholder="Type Password"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <button
+          class="disabled:opacity-65 disabled:cursor-not-allowed self-stretch py-4 bg-gold-500 text-white text-lg font-bold rounded-lg justify-center items-start gap-2 inline-flex"
+          [disabled]="form.invalid"
+          (click)="onSubmit()"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

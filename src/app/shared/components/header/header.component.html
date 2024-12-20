@@ -1,0 +1,25 @@
+<div class="w-full rounded-lg bg-white p-4 pb-0 flex items-center gap-3">
+  <span
+    (click)="open()"
+    nz-icon
+    nzType="menu"
+    nzTheme="outline"
+    class="pb-4 text-xl cursor-pointer flex lg:hidden text-gold-500"
+  ></span>
+  <p class="opacity-90 text-[#2a2a2a] text-xl lg:text-[22px] font-semibold">
+    Hi, {{ currentUser?.fname }} {{ currentUser?.lname }}
+  </p>
+</div>
+
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="showSideBarDrawer"
+  nzPlacement="left"
+  (nzOnClose)="close()"
+  [nzWidth]="250"
+  class="w-fit p-0"
+>
+  <ng-container *nzDrawerContent>
+    <app-side-bar class="w-fit"></app-side-bar>
+  </ng-container>
+</nz-drawer>

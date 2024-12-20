@@ -1,3 +1,33 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
+import { Constants } from './core/common/constants';
+import { WrapperComponent } from './shared/components/wrapper/wrapper.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', redirectTo: `/auth/${Constants.LOGIN_PATH}`, pathMatch: 'full' },
+  { path: 'auth', loadChildren: () => import('./features/auth/auth.routes') },
+  {
+    path: 'home',
+    component: WrapperComponent,
+    children: [
+      {
+        path: Constants.USERS_PATH,
+        loadChildren: () => import('./features/users/users.routes'),
+      },
+      {
+        path: Constants.ATTRACTIONS_PATH,
+        loadChildren: () => import('./features/attractions/attractions.routes'),
+      },
+      {
+        path: Constants.PETS_PATH,
+        loadChildren: () => import('./features/pets/pets.routes'),
+      },
+      {
+        path: '**',
+        redirectTo: `/home/${Constants.USERS_PATH}`,
+      },
+    ],
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always',
+  },
+];

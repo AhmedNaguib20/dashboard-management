@@ -1,0 +1,41 @@
+<div class="flex flex-col gap-5">
+  <div class="w-full flex justify-end">
+    <nz-date-picker
+      class="max-w-screen w-[300px] py-2 rounded-lg"
+      [nzShowToday]="false"
+      [nzFormat]="'yyyy-MM-dd'"
+      [nzPlaceHolder]="'Select Date'"
+      [(ngModel)]="date"
+      (ngModelChange)="onDateChange($event)"
+    ></nz-date-picker>
+  </div>
+  <div class="w-full flex flex-wrap items-start justify-between gap-y-3">
+    <div
+      class="flex flex-wrap items-start justify-between w-full lg:w-[49%] gap-y-3"
+    >
+      <div
+        *ngFor="let pet of petsData"
+        class="w-full md:w-[49%] add-shadow p-5 bg-white rounded-lg h-full"
+      >
+        <p class="opacity-90 text-black-300 text-sm md:text-base font-bold">
+          {{ pet.animal }}
+        </p>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <p class="text-gray-500 text-sm font-semibold">{{ pet.date }}</p>
+            <p class="text-right text-gray-500 text-sm font-semibold pe-3">
+              {{ pet.price }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full lg:w-[49%]">
+      <app-pet-chart
+        *ngIf="petsChartData$ | async as petsChartData"
+        [chartData]="petsChartData"
+        class="w-full"
+      ></app-pet-chart>
+    </div>
+  </div>
+</div>

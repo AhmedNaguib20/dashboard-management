@@ -1,0 +1,159 @@
+<nz-modal
+  [nzVisible]="true"
+  [nzWidth]="700"
+  [nzFooter]="null"
+  [nzCentered]="true"
+  [nzClosable]="false"
+>
+  <ng-container *nzModalContent>
+    <p
+      class="text-zinc-800 text-base md:text-lg lg:text-[22px] font-semibold p-0"
+    >
+      {{ !selectedUser?.id ? "Create User" : "Edit User" }}
+    </p>
+    <div class="w-full flex">
+      <form
+        nz-form
+        [nzLayout]="'vertical'"
+        class="w-full"
+        nz-form
+        [formGroup]="form"
+      >
+        <div class="w-full flex flex-wrap items-start justify-between">
+          <div class="flex flex-col w-full md:w-[49%]">
+            <nz-form-item>
+              <label
+                class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+                nzFor="fname"
+                >First Name</label
+              >
+              <nz-form-control nzErrorTip="The field is required!">
+                <input
+                  class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                  nz-input
+                  formControlName="fname"
+                  placeholder="Type First Name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="flex flex-col w-full md:w-[49%]">
+            <nz-form-item>
+              <label
+                class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+                nzFor="fname"
+                >Last Name</label
+              >
+              <nz-form-control nzErrorTip="The field is required!">
+                <input
+                  class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                  nz-input
+                  formControlName="lname"
+                  placeholder="Type Last Name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div class="w-full flex flex-wrap items-start justify-between">
+          <div class="flex flex-col w-full md:w-[49%]">
+            <nz-form-item>
+              <label
+                class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+                nzFor="username"
+                >User Name</label
+              >
+              <nz-form-control nzErrorTip="The field is required!">
+                <input
+                  class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                  nz-input
+                  formControlName="username"
+                  placeholder="Type User Name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div class="flex flex-col w-full md:w-[49%]">
+            <nz-form-item>
+              <label
+                class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+                nzFor="password"
+                >Password</label
+              >
+              <nz-form-control nzErrorTip="The field is required!">
+                <input
+                  class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                  nz-input
+                  type="password"
+                  formControlName="password"
+                  placeholder="Type Password"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div class="flex flex-col w-full">
+          <nz-form-item>
+            <label
+              class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+              nzFor="username"
+              >Email</label
+            >
+            <nz-form-control nzErrorTip="The field is required!">
+              <input
+                class="w-full py-3 border-[1px] border-gray-200 rounded-lg"
+                nz-input
+                formControlName="email"
+                placeholder="Type Email"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div class="flex flex-col w-full">
+          <nz-form-item>
+            <label
+              class="text-gray-400 text-sm md:text-[15px] font-semibold mb-1"
+              nzFor="username"
+              >Image</label
+            >
+            <nz-form-control nzErrorTip="The field is required!">
+              <nz-upload
+                nzType="drag"
+                [nzMultiple]="false"
+                [nzBeforeUpload]="beforeUpload"
+                [(nzFileList)]="fileList"
+              >
+                <p class="ant-upload-drag-icon">
+                  <span nz-icon nzType="inbox"></span>
+                </p>
+                <p class="ant-upload-text">
+                  Click or drag file to this area to upload
+                </p>
+              </nz-upload>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="flex items-center gap-5 justify-end bg-white w-full">
+          <button
+            class="text-neutral-600 text-xs md:text-sm font-semibold rounded-2xl underline"
+            type="button"
+            (click)="onCloseModal()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            [disabled]="!form.valid"
+            (click)="submitForm()"
+            class="w-[250px] bg-gold-500 text-xs md:text-sm text-white py-4 px-8 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</nz-modal>
