@@ -1,42 +1,16 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  output,
-} from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
-import { NzIconModule } from 'ng-zorro-antd/icon';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { UsersService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Constants } from '../../../../core/common/constants';
 import { User } from '../../../../core/data/models/user.model';
 import { LoadingService } from '../../../../shared/services/loading.service';
+import { SHARED_IMPORTS } from '../../../../shared/shared-standalone-imports';
 
 @Component({
   selector: 'app-add-edit-user',
-  imports: [
-    NzModalModule,
-    ReactiveFormsModule,
-    NzButtonModule,
-    NzFormModule,
-    NzInputModule,
-    NzSelectModule,
-    NzUploadModule,
-    NzIconModule,
-  ],
+  imports: [SHARED_IMPORTS],
   templateUrl: './add-edit-user.component.html',
   styleUrl: './add-edit-user.component.scss',
   standalone: true,

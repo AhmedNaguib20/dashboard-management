@@ -1,36 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { LoadingService } from '../../../../shared/services/loading.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../../../core/data/models/user.model';
 import { Router } from '@angular/router';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzUploadModule } from 'ng-zorro-antd/upload';
-import { NzIconModule } from 'ng-zorro-antd/icon';
+import { SHARED_IMPORTS } from '../../../../shared/shared-standalone-imports';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    ReactiveFormsModule,
-    NzButtonModule,
-    NzFormModule,
-    NzInputModule,
-    NzSelectModule,
-    NzUploadModule,
-    NzIconModule,
-  ],
+  imports: [SHARED_IMPORTS],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   standalone: true,

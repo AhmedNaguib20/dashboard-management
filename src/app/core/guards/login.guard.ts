@@ -10,13 +10,9 @@ export class LoginGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.loginService.currentUser$.value) {
-      console.log('test2');
-
       this.router.navigate(['/home/' +Constants.USERS_PATH]);
       return false;
     }
-    console.log('test4');
-
     return true;
   }
 }

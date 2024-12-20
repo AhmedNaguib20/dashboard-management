@@ -1,17 +1,5 @@
-import {
-  Component,
-  inject,
-  model,
-  OnInit,
-  signal,
-  ViewChild,
-} from '@angular/core';
-import {
-  MatPaginator,
-  MatPaginatorModule,
-  PageEvent,
-} from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { UsersService } from '../../services/user.service';
 import { User } from '../../../../core/data/models/user.model';
 import { UsersResponse } from '../../../../core/data/models/users-response.model';
@@ -19,29 +7,21 @@ import { Constants } from '../../../../core/common/constants';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { AddEditUserComponent } from '../add-edit-user/add-edit-user.component';
-import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../../shared/services/loading.service';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { TableColumns } from './table-columns';
+import { SHARED_IMPORTS } from '../../../../shared/shared-standalone-imports';
 
 @Component({
   selector: 'app-users-list',
-  imports: [
-    MatTableModule,
-    MatPaginatorModule,
-    CardComponent,
-    AddEditUserComponent,
-    CommonModule,
-    NzTableModule,
-  ],
+  imports: [CardComponent, AddEditUserComponent, SHARED_IMPORTS],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss',
   standalone: true,
 })
 export class UsersListComponent implements OnInit {
   public columns = TableColumns;
-  public dataSource: MatTableDataSource<User> = new MatTableDataSource<User>();
+  public dataSource: User[] = [];
   public length: number = 12;
   public pageSize: number = Constants.ITEMS_PER_PAGE;
   public currentPage: number = 1;
@@ -111,7 +91,7 @@ export class UsersListComponent implements OnInit {
     this.loadingService.startLoading();
     this.userService.getUsers(page, itemsPerPage, searchWord).subscribe({
       next: (response: UsersResponse) => {
-        this.dataSource.data = response.data;
+        this.dataSource = response.data;
         this.length = response.total;
         this.pageSize = response.per_page;
         this.currentPage = response.page;

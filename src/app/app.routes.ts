@@ -13,14 +13,17 @@ export const routes: Routes = [
       {
         path: Constants.USERS_PATH,
         loadChildren: () => import('./features/users/users.routes'),
+        data: { animation: 'UsersPage' },
       },
       {
         path: Constants.ATTRACTIONS_PATH,
         loadChildren: () => import('./features/attractions/attractions.routes'),
+        data: { animation: 'AttractionsPage' },
       },
       {
         path: Constants.PETS_PATH,
         loadChildren: () => import('./features/pets/pets.routes'),
+        data: { animation: 'PetsPage' },
       },
       {
         path: '**',

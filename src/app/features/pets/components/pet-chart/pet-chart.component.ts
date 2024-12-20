@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, AfterViewInit, Input } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { PetsChartResponse } from '../../../../core/data/models/pets-chart-response.model';
 
@@ -10,14 +10,10 @@ Chart.register(...registerables);
   styleUrls: ['./pet-chart.component.scss'],
   standalone: true,
 })
-export class PetChartComponent implements OnInit, AfterViewInit {
+export class PetChartComponent implements AfterViewInit {
   @Input() chartData: PetsChartResponse;
 
   constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.chartData);
-  }
 
   ngAfterViewInit(): void {
     this.createLineChart();

@@ -1,21 +1,19 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PetChartComponent } from '../pet-chart/pet-chart.component';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { FormsModule } from '@angular/forms';
 import moment from 'moment';
 import { PetsService } from '../../services/pets.service';
 import {
   PetsChartResponse,
   PetsResponse,
 } from '../../../../core/data/models/pets-chart-response.model';
-import { CommonModule } from '@angular/common';
 import { LoadingService } from '../../../../shared/services/loading.service';
 import { Observable } from 'rxjs';
+import { SHARED_IMPORTS } from '../../../../shared/shared-standalone-imports';
 
 @Component({
   selector: 'app-pets-data',
   standalone: true,
-  imports: [PetChartComponent, NzDatePickerModule, FormsModule, CommonModule],
+  imports: [PetChartComponent, SHARED_IMPORTS],
   templateUrl: './pets-data.component.html',
   styleUrl: './pets-data.component.scss',
 })

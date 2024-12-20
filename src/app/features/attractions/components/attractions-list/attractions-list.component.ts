@@ -1,41 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  MatPaginator,
-  MatPaginatorModule,
-  PageEvent,
-} from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Constants } from '../../../../core/common/constants';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
-import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { AddEditAttractionComponent } from '../add-edit-attraction/add-edit-attraction.component';
 import { AttractionsService } from '../../services/attractions.service';
 import { AttractionsResponse } from '../../../../core/data/models/attraction-response.model';
 import { Attraction } from '../../../../core/data/models/attraction.model';
 import { LoadingService } from '../../../../shared/services/loading.service';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { TableColumns } from './table-columns';
+import { SHARED_IMPORTS } from '../../../../shared/shared-standalone-imports';
 
 @Component({
   selector: 'app-attractions-list',
-  imports: [
-    MatTableModule,
-    MatPaginatorModule,
-    CardComponent,
-    AddEditAttractionComponent,
-    CommonModule,
-    NzTableModule,
-  ],
+  imports: [CardComponent, AddEditAttractionComponent, SHARED_IMPORTS],
   templateUrl: './attractions-list.component.html',
   styleUrl: './attractions-list.component.scss',
   standalone: true,
 })
 export class attractionsListComponent implements OnInit {
   public columns = TableColumns;
-  public dataSource: MatTableDataSource<Attraction> =
-    new MatTableDataSource<Attraction>();
+  public dataSource: Attraction[] = [];
   public length: number = 12;
   public pageSize: number = Constants.ITEMS_PER_PAGE;
   public currentPage: number = 1;
@@ -106,7 +92,7 @@ export class attractionsListComponent implements OnInit {
       .getAttractions(page, itemsPerPage, searchWord)
       .subscribe({
         next: (response: AttractionsResponse) => {
-          this.dataSource.data = response.data;
+          this.dataSource = response.data;
           this.length = response.total;
           this.pageSize = response.per_page;
           this.currentPage = response.page;
