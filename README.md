@@ -14,7 +14,7 @@
 ---
 
 ## Project Overview
-This Angular application is a responsive, user-friendly dashboard management system designed with modern UI/UX practices. The application supports user management, including creating, editing, and deleting users, and integrates robust authentication mechanisms.
+This Angular application is a responsive, user-friendly dashboard management system designed with modern UI/UX practices. The application supports user management, attraction management and pets management including creating, editing, and deleting users and attractions and integrates robust authentication mechanisms.
 
 ---
 
@@ -22,6 +22,9 @@ This Angular application is a responsive, user-friendly dashboard management sys
 - **User Management:**
   - Create, edit, and delete users.
   - View users in a responsive Angular Material table with pagination and search capabilities.
+- **Attraction Management:**
+  - Create, edit, and delete attractions.
+  - View attraction in a responsive Angular Material table with pagination and search capabilities.
 - **Authentication:**
   - Secure login functionality using JWT tokens.
   - Login credentials validation.
