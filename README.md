@@ -1,4 +1,4 @@
-# Angular Application README
+# Dashboard Management Application README
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -10,8 +10,6 @@
 - [Authentication](#authentication)
 - [How to Run](#how-to-run)
 - [Login Credentials](#login-credentials)
-- [Testing](#testing)
-- [Contributing](#contributing)
 
 ---
 
